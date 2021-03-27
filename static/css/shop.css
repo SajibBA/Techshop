@@ -7,7 +7,23 @@ body {
   background-color: #333;
 }
 
+
 .navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.catbar {
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  background-color: #993;
+}
+.catbar a {
   float: left;
   font-size: 16px;
   color: white;
@@ -97,4 +113,16 @@ body {
 .column {
   float: left;
   width: 30%;
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
