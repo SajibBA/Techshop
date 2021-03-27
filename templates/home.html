@@ -1,7 +1,41 @@
 {% extends 'base.html' %}
 
+
+
 {% block content %}
 
+<div class="navbar">
+    {% for categories in category %}
+
+  <div class="dropdown">
+    <button class="dropbtn">{{ categories }}
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+        {% for sub_categories in sub_category %}
+        {% if categories == sub_categories.parent_category %}
+      <a href="#">{{ sub_categories }}</a>
+        {% endif %}
+        {% endfor %}
+    </div>
+  </div>
+    {% endfor %}
+</div>
+
+
+
+{% for products in product %}
+<div class="column">
+ <div class="card">
+  <img src="{{ products.product_pic.url }}" alt="HTML5" style="width:100px;height:100px">
+  <h1>{{ products.name }}</h1>
+  <p class="price">Regular Price: {{ products.normal_price }}</p>
+  <p class="price">Special Price: {{ products.discount_price }}</p>
+  <p>{{ products.product_details }}</p>
+  <p><button>Add to Cart</button></p>
+</div>
+</div>
+{% endfor %}
 
 
 {% endblock %}
