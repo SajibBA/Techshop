@@ -23,12 +23,11 @@
 </div>
 
 
-{% for sub_categoriess in sub_category %}
-<div class="catbar"><a href="">{{sub_categoriess.sub_category_name}}</a></div>
+{% for brands in brand %}
 
-{% for products in product %}
-
-{% if sub_categoriess == products.sub_category %}
+{% for products in product_in_this %}
+{% if brands == products.brand %}
+<div class="catbar"><a href="">{{brands}}</a></div>
 <div class="column">
  <div class="card">
   <img src="{{ products.product_pic.url }}" alt="HTML5" style="width:100px;height:100px">
@@ -40,12 +39,12 @@
 
 </div>
 
-{% endif %}
+
 
 </div>
+{% endif %}
 {% endfor %}
 
 {% endfor %}
-
 
 {% endblock %}
