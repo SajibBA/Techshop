@@ -22,16 +22,19 @@
     {% endfor %}
 </div>
 
+<div class="catbar"><a href="">{{subCategory}}</a></div>
 
 {% for brands in brand %}
 
 {% for products in product_in_this %}
 {% if brands == products.brand %}
-<div class="catbar"><a href="">{{brands}}</a></div>
+<div class="brandbar"><a href="">{{brands}}</a></div>
 <div class="column">
  <div class="card">
   <img src="{{ products.product_pic.url }}" alt="HTML5" style="width:100px;height:100px">
+  <a href="{% url 'view_product_details' products.pk %}">
   <h1>{{ products.name }}</h1>
+  </a>
   <p class="price">Regular Price: {{ products.normal_price }} Tk</p>
   <p class="price">Special Price: {{ products.discount_price }} Tk</p>
   <p>{{ products.product_details }}</p>

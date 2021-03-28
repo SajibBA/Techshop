@@ -31,3 +31,16 @@ def view_sub_category_products(request, pk):
                'brand': brand, 'category': category,
                'sub_category': sub_category, 'product_in_this': product_in_this}
     return render(request, 'sub_category_products.html', context)
+
+
+def view_product_details(request, pk):
+    try:
+        product = Product.objects.get(pk=pk)
+    except Product.DoesNotExist:
+        raise Http404
+    brand = Brand.objects.all()
+    category = Category.objects.all()
+    sub_category = SubCategory.objects.all()
+    context = {'product': product, 'brand': brand, 'category': category,
+               'sub_category': sub_category, }
+    return render(request, 'product_details.html', context)

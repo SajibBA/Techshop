@@ -24,7 +24,7 @@
 
 
 {% for sub_categoriess in sub_category %}
-<div class="catbar"><a href="">{{sub_categoriess.sub_category_name}}</a></div>
+<div class="catbar"><a href="{% url 'view_sub_category_products' sub_categoriess.pk %}">{{sub_categoriess.sub_category_name}}</a></div>
 
 {% for products in product %}
 
@@ -32,7 +32,9 @@
 <div class="column">
  <div class="card">
   <img src="{{ products.product_pic.url }}" alt="HTML5" style="width:100px;height:100px">
+  <a href="{% url 'view_product_details' products.pk %}">
   <h1>{{ products.name }}</h1>
+  </a>
   <p class="price">Regular Price: {{ products.normal_price }} Tk</p>
   <p class="price">Special Price: {{ products.discount_price }} Tk</p>
   <p>{{ products.product_details }}</p>
