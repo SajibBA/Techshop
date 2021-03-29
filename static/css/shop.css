@@ -2,13 +2,13 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.navbar {
+.navbarcustom {
   overflow: hidden;
   background-color: #333;
 }
 
 
-.navbar a {
+.navbarcustom a {
   float: left;
   font-size: 16px;
   color: white;
@@ -47,12 +47,12 @@ body {
   text-decoration: none;
 }
 
-.dropdown {
+.dropdowncustom {
   float: left;
   overflow: hidden;
 }
 
-.dropdown .dropbtn {
+.dropdowncustom .dropbtncustom {
   font-size: 16px;
   border: none;
   outline: none;
@@ -63,11 +63,11 @@ body {
   margin: 0;
 }
 
-.navbar a:hover, .dropdown:hover .dropbtn {
+.navbarcustom a:hover, .dropdowncustom:hover .dropbtncustom {
   background-color: red;
 }
 
-.dropdown-content {
+.dropdowncustom-content {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
@@ -76,7 +76,7 @@ body {
   z-index: 1;
 }
 
-.dropdown-content a {
+.dropdowncustom-content a {
   float: none;
   color: black;
   padding: 12px 16px;
@@ -85,17 +85,16 @@ body {
   text-align: left;
 }
 
-.dropdown-content a:hover {
+.dropdowncustom-content a:hover {
   background-color: #ddd;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdowncustom:hover .dropdowncustom-content {
   display: block;
 }
 
 
-
-.card {
+.cardcustom {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 300px;
   margin: auto;
@@ -104,7 +103,28 @@ body {
 }
 
 
-.card2 {
+.pricecustom {
+  color: grey;
+  font-size: 22px;
+}
+
+.cardcustom button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.cardcustom button:hover {
+  opacity: 0.7;
+}
+
+.card2custom {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 600px;
   margin: auto;
@@ -113,12 +133,11 @@ body {
   background-color: lightblue;
 }
 
-.price {
-  color: grey;
-  font-size: 22px;
+.card2custom button:hover {
+  opacity: 0.7;
 }
 
-.card button {
+.card2custom button {
   border: none;
   outline: 0;
   padding: 12px;
@@ -130,55 +149,88 @@ body {
   font-size: 18px;
 }
 
-.card button:hover {
-  opacity: 0.7;
-}
 
-.card button {
-  border: none;
-  outline: 0;
-  padding: 12px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-  font-size: 18px;
-}
-
-.card2 button:hover {
-  opacity: 0.7;
-}
-
-.card2 button {
-  border: none;
-  outline: 0;
-  padding: 12px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-  font-size: 18px;
-}
-
-.card button:hover {
-  opacity: 0.7;
-}
-
-.column {
+.columncustom {
   float: left;
-  width: 30%;
+  width: 25%;
 }
 
 @media screen and (max-width: 600px) {
-  .column {
+  .columncustom {
     width: 100%;
   }
 }
 
-.row:after {
+.rowcustom:after {
   content: "";
   display: table;
   clear: both;
 }
+
+
+/* custom column */
+
+        #contentwrapper {
+			float: left;
+			width: 100%;
+		}
+
+		#contentcolumn {
+			margin: 0 230px 0 230px;
+		}
+
+		#leftcolumn {
+			float: left;
+			width: 230px;
+			margin-left: -100%;
+			background: #24C8FF;
+		}
+
+		#rightcolumn {
+			float: left;
+			width: 230px;
+			margin-left: -230px;
+			background: #FFFB00;
+		}
+
+		.innertext {
+			margin: 20px;
+			font-family: Arial;
+			color: #5E5E5E;
+		}
+
+		/* ###### Responsive layout CSS ###### */
+
+		@media (max-width: 840px){ /* Drop Right Column Down */
+
+		#leftcolumn {
+				margin-left: -100%;
+			}
+
+		#rightcolumn {
+				float: none;
+				width: 100%;
+				margin-left: 0;
+				clear: both;
+			}
+
+		#contentcolumn {
+				margin-right: 0; /*Set margin to LeftColumnWidth*/
+			}
+
+		}
+
+		@media (max-width: 600px){ /* Drop Left Column Down */
+
+			#leftcolumn {
+				float: none;
+				width: 100%;
+				clear: both;
+				margin-left: 0;
+			}
+
+			#contentcolumn {
+				margin-left: 0;
+			}
+
+		}

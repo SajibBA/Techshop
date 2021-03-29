@@ -12,7 +12,7 @@ def home(request):
     sub_category = SubCategory.objects.all()
 
     context = {'product': product, 'brand': brand, 'category': category,
-               'sub_category': sub_category, }
+               'sub_category': sub_category,}
     return render(request, 'home.html', context)
 
 
@@ -26,10 +26,17 @@ def view_sub_category_products(request, pk):
     category = Category.objects.all()
     sub_category = SubCategory.objects.all()
     product_in_this = Product.objects.filter(sub_category=subCategory)
+    brand_in_this = []
+    for brands in  brand:
+        for products in product_in_this:
+            if brands == products.brand:
+                brand_in_this.append(brands)
+                break
 
     context = {'subCategory': subCategory, 'product': product,
                'brand': brand, 'category': category,
-               'sub_category': sub_category, 'product_in_this': product_in_this}
+               'sub_category': sub_category, 'product_in_this': product_in_this,
+               'brand_in_this': brand_in_this, }
     return render(request, 'sub_category_products.html', context)
 
 
