@@ -20,13 +20,28 @@ body {
 .catbar {
   left: 0;
   width: 100%;
+  margin: 5px 0px;
   overflow: hidden;
-  background-color: silver;
+  background-color: white;
+  box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.2);
 }
 .catbar a {
   float: left;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 16px;
-  color: white;
+  font-weight: 400;
+  color: rgb(5, 5, 5);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.catbar a:hover {
+  float: left;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 16px;
+  font-weight: 900;
+  color: red;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -36,12 +51,31 @@ body {
   left: 0;
   width: 100%;
   overflow: hidden;
-  background-color: darkblue;
+
+  background-color: white(142, 228, 43);
 }
 .brandbar a {
   float: left;
   font-size: 16px;
+  color: black;
+  margin-left: 5px;
+  border: 2px solid darkblue;
+  border-radius: 25% 10%;
+  box-shadow: 8px darkblue;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.brandbar a:hover {
+  float: left;
+  font-size: 16px;
   color: white;
+  margin-left: 5px;
+  background-color: darkblue;
+  border: 2px solid darkblue;
+  border-radius: 25% 10%;
+  box-shadow: 8px darkblue;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -87,6 +121,7 @@ body {
 
 .dropdowncustom-content a:hover {
   background-color: #ddd;
+  color: red;
 }
 
 .dropdowncustom:hover .dropdowncustom-content {
