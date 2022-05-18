@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+<div class="catbar">
+    {% for categories in category %}
+
+  <div class="catbardropdown">
+    <button class="catbardropbtn">{{ categories }}
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="catbardropdown-content">
+        {% for sub_categories in sub_category %}
+        {% if categories == sub_categories.parent_category %}
+      <a href="{% url 'view_sub_category_products' sub_categories.pk %}">{{ sub_categories }}</a>
+        {% endif %}
+        {% endfor %}
+    </div>
+  </div>
+    {% endfor %}
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+          <img src="{{ product.product_pic.url }}" alt="HTML5" style="width:250px;height:250px">
+    </div>
+    <div class="col-sm-4">
+          <div class="card2custom">
+          <a href="{% url 'view_product_details' product.pk %}">
+          <h1>{{ product.name }}</h1>
+          </a>
+          <p>Category: {{ product.category }}</p>
+          <p>{{ product.sub_category }}</p>
+          <p>Brand: {{ product.brand }}</p>
+          <p class="pricecustom">Regular Price: {{ product.normal_price }} Tk</p>
+          <p class="pricecustom">Special Price: {{ product.discount_price }} Tk</p>
+          <p><button>Add to Cart</button></p>
+</div>
+    </div>
+  </div>
+</div>
+
+
+
+<div>
+    <p>{{ product.product_details }}</p>
+</div>
+
+
+
+
+
+{% endblock %}
