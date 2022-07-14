@@ -236,10 +236,10 @@ body {
 
 .columncustom {
   float: left;
-  width: 25%;
+  width: 20%;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 767px) {
   .columncustom {
     width: 100%;
   }
