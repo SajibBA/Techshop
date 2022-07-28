@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+<div class="catbar">
+    {% for categories in category %}
+
+  <div class="catbardropdown">
+    <button class="catbardropbtn">{{ categories }}
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="catbardropdown-content">
+        {% for sub_categories in sub_category %}
+        {% if categories == sub_categories.parent_category %}
+      <a href="{% url 'view_sub_category_products' sub_categories.pk %}">{{ sub_categories }}</a>
+        {% endif %}
+        {% endfor %}
+    </div>
+  </div>
+    {% endfor %}
+</div>
+
+{% if submitbutton == 'Search' and request.GET.q != '' %}
+{% if product %}
+
+{% for sub_categoriess in nonemty_sub_category %}
+<div class="subcatbar">
+    <a href="{% url 'view_sub_category_products' sub_categoriess.pk %}">{{sub_categoriess.sub_category_name}}</a>
+</div>
+<div class="p-items-wrap">
+{% for products in product %}
+
+{% if sub_categoriess == products.sub_category %}
+
+  <div class="p-item">
+    <div class="p-item-inner">
+      <div class="p-item-img">
+        <img src="{{ products.product_pic.url }}" alt="HTML5"  width="228" height="228">
+      </div>
+      <div class="p-item-details">
+        <div class="p-item-name">
+          <a href="{% url 'view_product_details' products.pk %}">
+            <h4>{{ products.name }}</h4>
+          </a>
+        </div>
+        <div class="p-item-price">
+          <p class="p-item-price-regular">Regular Price: {{ products.normal_price }} Tk</p>
+          <p class="p-item-price-special">Special Price: {{ products.discount_price }} Tk</p>
+        </div>
+      </div>
+  <p class="cardcustom"><button>Add to Cart</button></p>
+</div>
+</div>
+
+
+
+{% endif %}
+
+
+{% endfor %}
+</div>
+{% endfor %}
+
+
+
+
+{% else %}
+There is no product with this name
+{% endif %}
+{% endif %}
+
+
+{% endblock %}

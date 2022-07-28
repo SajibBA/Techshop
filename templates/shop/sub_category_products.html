@@ -26,27 +26,41 @@
 
 {% for brands in brand_in_this %}
 <div class="brandbar"><a href="">{{brands}}</a></div>
-{% for products in product_in_this %}
-{% if brands == products.brand %}
-
-<div class="columncustom">
- <div class="cardcustom">
-  <img src="{{ products.product_pic.url }}" alt="HTML5" style="width:100px;height:100px">
-  <a href="{% url 'view_product_details' products.pk %}">
-  <h1>{{ products.name }}</h1>
-  </a>
-  <p class="pricecustom">Regular Price: {{ products.normal_price }} Tk</p>
-  <p class="pricecustom">Special Price: {{ products.discount_price }} Tk</p>
-  <p><button>Add to Cart</button></p>
-
-</div>
 
 
+<div class="p-items-wrap">
+  {% for products in product %}
 
-</div>
-{% endif %}
+  {% if brands == products.brand %}
+
+    <div class="p-item">
+      <div class="p-item-inner">
+        <div class="p-item-img">
+          <img src="{{ products.product_pic.url }}" alt="HTML5"  width="228" height="228">
+        </div>
+        <div class="p-item-details">
+          <div class="p-item-name">
+            <a href="{% url 'view_product_details' products.pk %}">
+              <h4>{{ products.name }}</h4>
+            </a>
+          </div>
+          <div class="p-item-price">
+            <p class="p-item-price-regular">Regular Price: {{ products.normal_price }} Tk</p>
+            <p class="p-item-price-special">Special Price: {{ products.discount_price }} Tk</p>
+          </div>
+        </div>
+    <p class="cardcustom"><button>Add to Cart</button></p>
+  </div>
+  </div>
+ 
+
+  {% endif %}
+
+  
+  {% endfor %}
+ </div>
+
 {% endfor %}
 
-{% endfor %}
 
 {% endblock %}
