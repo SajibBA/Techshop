@@ -50,7 +50,8 @@
                   <p class="p-item-price-special">Special Price: {{ products.discount_price }} Tk</p>
                 </div>
               </div>
-          <p class="cardcustom"><button>Add to Cart</button></p>
+          <p class="cardcustom">
+            <button onclick="location.href=`{% url 'add_product_to_cart' products.pk %}` " type="button">Add to Cart</button></p>
         </div>
         </div>
        

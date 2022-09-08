@@ -1,0 +1,64 @@
+
+{% extends 'base.html' %}
+
+{% load mathfilters %}
+
+{% block content %}
+
+<section class="bg-bt-gray p-tb-15">
+    <div class="container">
+        <div class="content ws-box p-15">
+            <h1 class="title">Shopping Cart                            </h1>
+                <div class="table-responsive">
+                    <table class="table table-bordered cart-table bg-white">
+                        <thead>
+                        <tr>
+                            <td class="text-center rs-none">Image</td>
+                            <td class="text-left">Product Name</td>
+                            <td class="text-left rs-none">Brand</td>
+                            <td class="text-left">Quantity</td>
+                            <td class="text-right rs-none">Unit Price</td>
+                            <td class="text-right">Total</td>
+                            <td class="text-right">Action</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for products in cartProduct %}
+                        <tr>
+                            <td class="text-center rs-none">
+                                <a href="{% url 'view_product_details' products.product.pk %}"><img src="{{ products.product.product_pic.url }}" width="47" 
+                                height="47" alt="HTML5" class="img-thumbnail"></a>
+                            </td>
+                            <td class="text-left"><a href="{% url 'view_product_details' products.product.pk %}">{{ products.product.name }}</a></td>
+                            <td class="text-left rs-none">{{ products.product.brand }}</td>
+                            <td class="text-left">{{ products.quantity }}</td>
+                            <td class="text-right">{{ products.product.discount_price}} </td>
+                            <td class="text-right rs-none">{{ products.total_cost }}</td>
+                            <td class="text-right rs-none"><span class="input-group-btn">{{products.pk}}
+                                <a href="{% url 'delete_product_from_cart' products.pk %}"><button type="button" data-toggle="tooltip" title="Remove" class="btn btn-danger" );"><i class="material-icons">Remove</i></button></a></span></div></td></td>
+                            
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table table-bordered bg-white cart-total">
+                                                <tbody><tr>
+                            <td class="text-right"><strong>Sub-Total:</strong></td>
+                            <td class="text-right amount">{{end_total_cost}}</td>
+                        </tr>
+                                                <tr>
+                            <td class="text-right"><strong>Total:</strong></td>
+                            <td class="text-right amount">{{end_total_cost|add:50.00}}</td>
+                        </tr>
+                                            </tbody></table>
+                </div>
+            </div>
+
+
+
+{% endblock %}
+
+

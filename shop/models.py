@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser , User
+
 
 # Create your models here.
 
@@ -44,3 +46,10 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+
+class CartProduct(models.Model):
+    product = models.ForeignKey(Product, related_name='product', on_delete=models.CASCADE, )
+    buyer = models.ForeignKey(User, related_name='buyer', on_delete=models.CASCADE, )
+    quantity = models.DecimalField( max_digits=8, decimal_places=0)
+    unit_cost = models.DecimalField( max_digits=8, decimal_places=2)
+    total_cost = models.DecimalField( max_digits=8, decimal_places=2)

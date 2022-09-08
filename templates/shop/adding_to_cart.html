@@ -1,0 +1,57 @@
+
+{% extends 'base.html' %}
+
+{% load mathfilters %}
+
+{% block content %}
+
+<section class="bg-bt-gray p-tb-15">
+    <div class="container">
+        <div class="content ws-box p-15">
+            <h1 class="title">Shopping Cart                            </h1>
+            <form method="post">
+                {% csrf_token %}
+                <div class="table-responsive">
+                    <table class="table table-bordered cart-table bg-white">
+                        <thead>
+                        <tr>
+                            <td class="text-center rs-none">Image</td>
+                            <td class="text-left">Product Name</td>
+                            <td class="text-left rs-none">Brand</td>
+                            <td class="text-left">Quantity</td>
+                            <td class="text-right rs-none">Unit Price</td>
+                            <td class="text-right">Action</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="text-center rs-none">
+                                <a href="{% url 'view_product_details' product.pk %}"><img src="{{ product.product_pic.url }}" width="47" 
+                                height="47" alt="HTML5" class="img-thumbnail"></a>
+                            </td>
+                            <td class="text-left"><a href="{% url 'view_product_details' product.pk %}">{{ product.name }}</a></td>
+                            <td class="text-left rs-none">{{ product.brand }}</td>
+                            <td class="text-left"><div class="input-group btn-block" style="max-width: 200px;">
+                                    <input type="text" name="quantity" value="1" size="1" class="form-control">
+                            <td class="text-right rs-none">{{ product.discount_price }}</td>
+                            <td class="text-right">
+                                <span class="input-group-btn">
+                                    <button type="submit" data-toggle="tooltip" title="Update" class="btn btn-primary"><i class="material-icons">Add to Cart</i></button>
+                                    <a href="{% url 'view_product_details' product.pk %}"><button type="button" data-toggle="tooltip" title="Remove" class="btn btn-danger" );"><i class="material-icons">Cancel</i></button></a></span></div></td>
+                            
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+
+
+
+
+
+
+
+{% endblock %}
+
+
+
