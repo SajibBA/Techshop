@@ -4,6 +4,8 @@ from django.http import Http404
 from .models import *
 from django.db.models import Q
 from django.shortcuts import redirect, get_object_or_404, render
+from django.contrib import messages
+
 
 # Create your views here.
 
@@ -117,17 +119,20 @@ def add_product_to_cart(request, pk):
     category = Category.objects.all()
     sub_category = SubCategory.objects.all()
 
-    if request.POST:
-            quantity = int(request.POST['quantity'])
+    if request.user.is_authenticated:
+        if request.POST:
+                quantity = int(request.POST['quantity'])
 
-            CartProduct.objects.get_or_create(
-                buyer=request.user,
-                product=product,
-                quantity=quantity,
-                unit_cost = product.discount_price,
-                total_cost = product.discount_price * quantity,
-            )
-            return redirect('view_cart')
+                CartProduct.objects.get_or_create(
+                    buyer=request.user,
+                    product=product,
+                    quantity=quantity,
+                    unit_cost = product.discount_price,
+                    total_cost = product.discount_price * quantity,
+                )
+                return redirect('view_cart')
+    else:
+        messages.error(request, "Please Login to add items in cart")
 
     context = {'product': product, 'brand': brand, 'category': category,
                'sub_category': sub_category, }
